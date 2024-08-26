@@ -15,6 +15,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     private var cancellables = Set<AnyCancellable>()
     private var searchResults: [Location] = []
     
+    private var noResults = false
+    
     let searchLabel = UILabel()
     let searchBar = UITextField()
     let searchButton = UIButton()
@@ -66,6 +68,12 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             .compactMap { $0 }
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] searchResults in
+                if searchResults.count == 0 {
+                    self?.noResults = true
+                } else {
+                    self?.noResults = false
+                }
+                
                 self?.searchResults = searchResults
                 self?.searchResultsView.reloadData()
             })
@@ -148,7 +156,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        searchResults.count
+        if noResults {
+            return 1
+        } else {
+            return searchResults.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -156,19 +168,24 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         var config = cell.defaultContentConfiguration()
         cell.backgroundColor = UIColor(red: 90.0/255.0, green: 160.0/255.0, blue: 200.0/255.0, alpha: 0.5)
-        let location = searchResults[indexPath.item]
-        config.text = location.name
         
-        let country = Locale.current.localizedString(forRegionCode: location.country)
-        
-        var secondaryText: String?
-        if let state = location.state {
-            secondaryText = "\(state), \(country ?? "")"
+        if (!noResults) {
+            let location = searchResults[indexPath.item]
+            config.text = location.name
+            
+            let country = Locale.current.localizedString(forRegionCode: location.country)
+            
+            var secondaryText: String?
+            if let state = location.state {
+                secondaryText = "\(state), \(country ?? "")"
+            } else {
+                secondaryText = country
+            }
+            
+            config.secondaryText = secondaryText
         } else {
-            secondaryText = country
+            config.text = "No results"
         }
-        
-        config.secondaryText = secondaryText
         
         cell.contentConfiguration = config
         
@@ -176,6 +193,9 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if noResults {
+            return;
+        }
         navigationController?.popViewController(animated: true)
         viewModel.choose(location: searchResults[indexPath.item])
     }

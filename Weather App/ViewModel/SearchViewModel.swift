@@ -44,6 +44,9 @@ class SearchViewModel {
         LocationRequest.send(query: trimmed) { result in
             switch(result) {
             case .failure:
+                // send empty array if there are no results
+                // TODO: Would like to distinguish network errors from no result (decoding error)
+                NotificationCenter.default.post(name: .searchResults, object: [Location]())
                 return;
             case .success(let locationResponse):
                 let locations = locationResponse as [Location]

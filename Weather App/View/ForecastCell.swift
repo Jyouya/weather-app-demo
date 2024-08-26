@@ -76,6 +76,7 @@ class ForecastCell: UITableViewCell {
         let date = Date(timeIntervalSince1970: weatherEntry.timestamp)
         let formatter = DateFormatter()
         formatter.dateFormat = "ha"
+        // Would have liked to add a setting for these to be in the user's timezone, or the localtime for the searched city
         timeLabel.text = formatter.string(from: date)
         tempLabel.text = formatTemperature(K: weatherEntry.main.temp)
         descriptionLabel.text = weatherEntry.weather.first?.description

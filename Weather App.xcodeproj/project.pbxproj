@@ -35,6 +35,7 @@
 		877EAD042C76626F00C7202D /* IconRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877EAD032C76626F00C7202D /* IconRequest.swift */; };
 		877EAD062C770D2E00C7202D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877EAD052C770D2E00C7202D /* SearchViewModel.swift */; };
 		877EAD082C77146000C7202D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877EAD072C77146000C7202D /* SearchViewController.swift */; };
+		877EAD0C2C7C53F400C7202D /* CurrentWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877EAD0B2C7C53F400C7202D /* CurrentWeatherView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		877EAD032C76626F00C7202D /* IconRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconRequest.swift; sourceTree = "<group>"; };
 		877EAD052C770D2E00C7202D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		877EAD072C77146000C7202D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		877EAD0B2C7C53F400C7202D /* CurrentWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 				877EACDA2C7532C300C7202D /* WeatherViewController.swift */,
 				877EACFE2C765A0100C7202D /* ForecastCell.swift */,
 				877EAD072C77146000C7202D /* SearchViewController.swift */,
+				877EAD0B2C7C53F400C7202D /* CurrentWeatherView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				877EACF52C75A86800C7202D /* LocationResponse.swift in Sources */,
 				877EAD022C765DDC00C7202D /* LocalizeTemperature.swift in Sources */,
 				877EACE72C75968F00C7202D /* Rain.swift in Sources */,
+				877EAD0C2C7C53F400C7202D /* CurrentWeatherView.swift in Sources */,
 				877EACEB2C7599B900C7202D /* City.swift in Sources */,
 				877EACFF2C765A0100C7202D /* ForecastCell.swift in Sources */,
 				877EACDB2C7532C300C7202D /* WeatherViewController.swift in Sources */,

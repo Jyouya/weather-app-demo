@@ -34,7 +34,7 @@ struct WeatherRequest {
         }
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-
+            
             guard let data = data else {
                 completion(.failure(.networkError))
                 return

@@ -15,7 +15,7 @@ struct WeatherEntry: Decodable {
     let clouds: Clouds
     let wind: Wind
 
-    let visibility: Int
+    let visibility: Int?
     let pop: Decimal
     let sys: WeatherSys
     let dateString: String
